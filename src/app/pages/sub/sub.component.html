@@ -1,6 +1,16 @@
 <div>
-    <form (ngSubmit)="addEntry()">
+    <form (ngSubmit)="addEntry()" class="window">
         <h1>Workout Entry</h1>
+        <label for="text">Workout Split</label>
+        <select name="workout-split" id="workout-split" class="box">
+            <option value="push">Push</option>
+            <option value="pull">Pull</option>
+            <option value="leg-ab">Leg-Ab</option>
+        </select>
+        <label for="text">Rep</label>
+        <input type="text" class="box">
+
+
         <input type="submit" value="Submit" class="btn">
     </form>
 </div>

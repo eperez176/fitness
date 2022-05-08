@@ -1,0 +1,13 @@
+.blocks {
+    width: 100px;
+    height: 25px;
+    background-color: aliceblue;
+    float: left;
+    border: 1px solid black;
+    cursor: pointer;
+    text-align: center;
+}
+.container{
+    position: relative;
+    width: max-content;
+}

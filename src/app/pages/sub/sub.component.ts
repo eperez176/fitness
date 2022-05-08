@@ -22,7 +22,10 @@ export class SubComponent implements OnInit {
     rep:['',{validators:[
       Validators.required,
       this.checkNum()
-      ]}]
+      ]}],
+    set:['',{validators:[
+      Validators.required
+    ]}]
   })
   
   checkNum():ValidatorFn { // Validates if the input is a number
@@ -32,8 +35,19 @@ export class SubComponent implements OnInit {
     }
   }
 
+  setTwo(inp:number):boolean {
+    console.log(inp)
+    if(inp >= 2)
+      return true
+    else
+      return false
+  }
+
   get rep():any {
     return this.subForm.get("rep")
+  }
+  get set():any{
+    return this.subForm.get("set")
   }
 
 }

@@ -7,15 +7,51 @@
             <option value="pull">Pull</option>
             <option value="leg-ab">Leg-Ab</option>
         </select>
-        <label for="text">Set</label>
+        <label for="text">Number of Sets</label>
+        <select name="number-set" id="number-set" class="box" formControlName="set">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+        <label for="text">Date</label>
         <input type="text" class="box">
+
+        <h3>Set 1</h3>
         <label for="text">Rep</label>
         <input type="text" class="box" formControlName="rep">
         <div *ngIf="rep.invalid" class="alert"> Invalid entry!</div>
-        <label for="text">Date</label>
-        <input type="text" class="box">
         <label for="text">Form</label>
+        <select name="form" id="form1" class="box">
+            <option value="sbf">sbf</option>
+            <option value="bf">bf</option>
+            <option value="mbf">mbf</option>
+            <option value="norm">norm</option>
+            <option value="gf">gf</option>
+            <option value="ef">ef</option>
+        </select>
+        <label for="text">Weight</label>
         <input type="text" class="box">
+
+        <div *ngIf="set.value >= 2" class="set">
+            <h3>Set 2</h3>
+            <label for="text">Rep</label>
+            <input type="text" class="box">
+            <div *ngIf="rep.invalid" class="alert"> Invalid entry!</div>
+            <label for="text">Form</label>
+            <select name="form" id="form1" class="box">
+                <option value="sbf">sbf</option>
+                <option value="bf">bf</option>
+                <option value="mbf">mbf</option>
+                <option value="norm">norm</option>
+                <option value="gf">gf</option>
+                <option value="ef">ef</option>
+            </select>
+            <label for="text">Weight</label>
+        <input type="text" class="box">
+        </div>
 
 
         <input type="submit" value="Submit" class="btn" [disabled]="!subForm.valid">

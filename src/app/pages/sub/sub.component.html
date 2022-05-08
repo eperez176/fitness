@@ -2,7 +2,7 @@
     <form [formGroup]="subForm" (ngSubmit)="addEntry()" class="window">
         <h1>Workout Entry</h1>
         <label for="text">Workout Split</label>
-        <select name="workout-split" id="workout-split" class="box">
+        <select name="workout-split" id="workout-split" class="box" formControlName="split">
             <option value="push">Push</option>
             <option value="pull">Pull</option>
             <option value="leg-ab">Leg-Ab</option>
@@ -18,25 +18,48 @@
         </select>
         <label for="text">Date</label>
         <input type="text" class="box">
-
-        <h3>Set 1</h3>
-        <label for="text">Rep</label>
-        <input type="text" class="box" formControlName="rep">
-        <div *ngIf="rep.invalid" class="alert"> Invalid entry!</div>
-        <label for="text">Form</label>
-        <select name="form" id="form1" class="box">
-            <option value="sbf">sbf</option>
-            <option value="bf">bf</option>
-            <option value="mbf">mbf</option>
-            <option value="norm">norm</option>
-            <option value="gf">gf</option>
-            <option value="ef">ef</option>
-        </select>
-        <label for="text">Weight</label>
+        <label for="text">Workout Type</label>
         <input type="text" class="box">
+        <label for="text">Start Time</label>
+        <input type="text" class="box">
+
+        <div *ngIf="set.value >= 1" class="set">
+            <h3>Set 1</h3>
+            <label for="text">Rep</label>
+            <input type="text" class="box" formControlName="rep">
+            <div *ngIf="rep.invalid" class="alert"> Invalid entry!</div>
+            <label for="text">Form</label>
+            <select name="form" id="form1" class="box">
+                <option value="sbf">sbf</option>
+                <option value="bf">bf</option>
+                <option value="mbf">mbf</option>
+                <option value="norm">norm</option>
+                <option value="gf">gf</option>
+                <option value="ef">ef</option>
+            </select>
+            <label for="text">Weight</label>
+            <input type="text" class="box">
+        </div>
 
         <div *ngIf="set.value >= 2" class="set">
             <h3>Set 2</h3>
+            <label for="text">Rep</label>
+            <input type="text" class="box">
+            <div class="alert"> Invalid entry!</div>
+            <label for="text">Form</label>
+            <select name="form" id="form1" class="box">
+                <option value="sbf">sbf</option>
+                <option value="bf">bf</option>
+                <option value="mbf">mbf</option>
+                <option value="norm">norm</option>
+                <option value="gf">gf</option>
+                <option value="ef">ef</option>
+            </select>
+            <label for="text">Weight</label>
+        <input type="text" class="box">
+        </div>
+        <div *ngIf="set.value >= 3" class="set">
+            <h3>Set 3</h3>
             <label for="text">Rep</label>
             <input type="text" class="box">
             <div *ngIf="rep.invalid" class="alert"> Invalid entry!</div>
@@ -53,6 +76,61 @@
         <input type="text" class="box">
         </div>
 
+        <div *ngIf="set.value >= 4" class="set">
+            <h3>Set 4</h3>
+            <label for="text">Rep</label>
+            <input type="text" class="box">
+            <div *ngIf="rep.invalid" class="alert"> Invalid entry!</div>
+            <label for="text">Form</label>
+            <select name="form" id="form1" class="box">
+                <option value="sbf">sbf</option>
+                <option value="bf">bf</option>
+                <option value="mbf">mbf</option>
+                <option value="norm">norm</option>
+                <option value="gf">gf</option>
+                <option value="ef">ef</option>
+            </select>
+            <label for="text">Weight</label>
+        <input type="text" class="box">
+        </div>
+
+        <div *ngIf="set.value >= 5" class="set">
+            <h3>Set 5</h3>
+            <label for="text">Rep</label>
+            <input type="text" class="box">
+            <div *ngIf="rep.invalid" class="alert"> Invalid entry!</div>
+            <label for="text">Form</label>
+            <select name="form" id="form1" class="box">
+                <option value="sbf">sbf</option>
+                <option value="bf">bf</option>
+                <option value="mbf">mbf</option>
+                <option value="norm">norm</option>
+                <option value="gf">gf</option>
+                <option value="ef">ef</option>
+            </select>
+            <label for="text">Weight</label>
+        <input type="text" class="box">
+        </div>
+
+        <div *ngIf="set.value >= 6" class="set">
+            <h3>Set 6</h3>
+            <label for="text">Rep</label>
+            <input type="text" class="box">
+            <div *ngIf="rep.invalid" class="alert"> Invalid entry!</div>
+            <label for="text">Form</label>
+            <select name="form" id="form1" class="box">
+                <option value="sbf">sbf</option>
+                <option value="bf">bf</option>
+                <option value="mbf">mbf</option>
+                <option value="norm">norm</option>
+                <option value="gf">gf</option>
+                <option value="ef">ef</option>
+            </select>
+            <label for="text">Weight</label>
+        <input type="text" class="box">
+        </div>
+        <label for="text">End Time</label>
+        <input type="text" class="box">
 
         <input type="submit" value="Submit" class="btn" [disabled]="!subForm.valid">
     </form>

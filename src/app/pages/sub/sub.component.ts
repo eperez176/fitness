@@ -25,6 +25,9 @@ export class SubComponent implements OnInit {
       ]}],
     set:['',{validators:[
       Validators.required
+    ]}],
+    split:['',{validators:[
+      Validators.required
     ]}]
   })
   

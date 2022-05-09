@@ -1,3 +1,28 @@
 .home{
     text-align: center;
 }
+.window{
+    position: absolute;
+    width: 400px;
+    max-height: 1600px;
+    background-color: rgb(255, 255, 255);
+    left: 33%;
+    margin-top: 1%;
+    border: 1px solid black;
+    text-align: center;
+    display: grid;
+}
+.box{
+    max-width: 200px;
+    margin-left: 25%;
+}
+.btn{
+    width: 100px;
+    margin-top: 10px;
+    margin-left: 37.5%;
+    margin-bottom: 1%;
+}
+.alert{
+    color: red;
+
+}

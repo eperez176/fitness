@@ -9,12 +9,24 @@
         <input type="text" class="box" formControlName="password">
         <label *ngIf="password.invalid" for="pass-alert" class="alert">Please Enter A Valid Password</label>
 
-        <a (click)="newUser()">New User?</a>
+        <a (click)="newUser()" class="user">New User?</a>
         <input type="submit" class="btn" [disabled]="!loginInfo.valid">
     </form>
-    <form *ngIf="loginAttempt" class="window" (ngSubmit)="goBack()">
+    <form *ngIf="loginFail" class="window" (ngSubmit)="goBack()">
         <h3>Wrong Username and Password Combination</h3>
         <h4>Please Try Again</h4>
         <input type="submit" class="btn" value="Back">
+    </form>
+    <form *ngIf="newUsername" class="window">
+        <h3>Sign Up</h3>
+        <label for="newUsername">Username</label>
+        <input type="text" class="box">
+        <label for="newPassword">Password</label>
+        <input type="text" class="box">
+
+        <div class="side">
+            <button (click)="goBack2()" class="btn2">Back</button> <button class="btn2" (click)="submitUser()">Submit</button>
+        </div>
+        
     </form>
 </div>

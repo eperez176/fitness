@@ -10,6 +10,8 @@ export class HomeComponent implements OnInit {
 
   validUsername:boolean = false;
   loginAttempt:boolean = false;
+  loginFail:boolean = false;
+  newUsername:boolean = false;
 
   constructor(private fb: FormBuilder) { }
 
@@ -28,14 +30,28 @@ export class HomeComponent implements OnInit {
 
   onSubmit(){
     this.loginAttempt = !this.loginAttempt;
+    this.loginFail = true;
     console.log("login attempt")
   }
 
   goBack(){
     this.loginAttempt = !this.loginAttempt;
+    this.loginFail = false;
   }
   newUser(){
+    this.loginAttempt = !this.loginAttempt;
+    this.newUsername = true;
     console.log("new user")
+  }
+  goBack2(){
+    this.loginAttempt = false;
+    this.newUsername = false;
+    console.log("Go Back")
+  }
+  submitUser(){
+    this.loginAttempt = false;
+    this.newUsername = false;
+    console.log("Submit")
   }
 
   get username():any{

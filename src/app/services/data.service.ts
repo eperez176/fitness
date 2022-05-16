@@ -22,7 +22,8 @@ export class DataService {
   login(username:string,password:string):Observable<any>{
     console.log('called...')
     const data = {username,password};
-    const url = 'http://localhost:10000/login/' + stringify(data);
+    //const url = 'http://localhost:10000/login/' + stringify(data);
+    const url = 'https://fitness-db.azurewebsite.net/login/' + stringify(data);
     return this.http.get<any>(url,httpOptions);
   }
 

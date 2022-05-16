@@ -35,8 +35,10 @@ export class HomeComponent implements OnInit {
 
   onSubmit(){
     this.loginAttempt = !this.loginAttempt;
+    console.log("login attempted...")
     this.dataService.login(this.loginInfo.get('username')?.value,this.loginInfo.get('password')?.value).subscribe(r => { 
       this.validUsername = r;
+      console.log("Received the json...")
       if(r == true)
         this.loginFail = false;
       else

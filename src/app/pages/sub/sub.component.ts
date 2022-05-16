@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, Validators, FormBuilder, ValidatorFn, AbstractControl, ValidationErrors  } from '@angular/forms';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-sub',
@@ -8,7 +9,7 @@ import { FormsModule, Validators, FormBuilder, ValidatorFn, AbstractControl, Val
 })
 export class SubComponent implements OnInit {
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder, private dataService:DataService) { }
 
   ngOnInit(): void {
   }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import { DataService } from 'src/app/services/data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +10,17 @@ import { Validators, FormBuilder, ValidatorFn, AbstractControl, ValidationErrors
 })
 export class HomeComponent implements OnInit {
 
+  loginSub!:Subscription;
+
   validUsername:boolean = false;
   loginAttempt:boolean = false;
-  loginFail:boolean = false;
+  loginFail!:boolean;
   newUsername:boolean = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private dataService:DataService) { }
 
   ngOnInit(): void {
+    
   }
 
   loginInfo = this.fb.group({
@@ -30,8 +35,14 @@ export class HomeComponent implements OnInit {
 
   onSubmit(){
     this.loginAttempt = !this.loginAttempt;
-    this.loginFail = true;
-    console.log("login attempt")
+    this.dataService.login(this.loginInfo.get('username')?.value,this.loginInfo.get('password')?.value).subscribe(r => { 
+      this.validUsername = r;
+      if(r == true)
+        this.loginFail = false;
+      else
+        this.loginFail = true;
+    });
+    
   }
 
   goBack(){
@@ -59,5 +70,12 @@ export class HomeComponent implements OnInit {
   }
   get password():any{
     return this.loginInfo.get("password")
+  }
+
+  set username(inp:string){
+    this.loginInfo.setValue({username:inp})
+  }
+  set password(inp:string){
+    this.loginInfo.setValue({password:inp})
   }
 }

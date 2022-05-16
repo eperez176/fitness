@@ -29,4 +29,7 @@
         </div>
         
     </form>
+    <div *ngIf="validUsername" class="window">
+        <h4>Welcome {{username.value}}!</h4>
+    </div>
 </div>

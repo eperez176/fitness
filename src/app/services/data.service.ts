@@ -22,9 +22,17 @@ export class DataService {
   login(username:string,password:string):Observable<any>{
     console.log('called...')
     const data = {username,password};
-    //const url = 'http://localhost:10000/login/' + stringify(data);
-    const url = 'https://fitness-db.azurewebsites.net/login/' + stringify(data);
+    const url = 'http://localhost:10000/login/' + stringify(data);
+    //const url = 'https://fitness-db.azurewebsites.net/login/' + stringify(data);
     return this.http.get<any>(url,httpOptions);
+  }
+  newUser(username:string, password:string){
+    console.log('New User...');
+    const data = {username,password};
+    console.log(data);
+    const url = 'http://localhost:10000/newUser';
+    //const url = 'https://fitness-db.azurewebsites.net/login/' + stringify(data);
+    return this.http.post<any>(url,data,httpOptions);
   }
 
 

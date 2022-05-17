@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
   loginFail!:boolean;
   newUsername:boolean = false;
 
-  constructor(private fb: FormBuilder, private dataService:DataService) { }
+  constructor(private fb: FormBuilder, private dataService:DataService, private router:Router) { }
 
   ngOnInit(): void {
     
@@ -31,6 +32,15 @@ export class HomeComponent implements OnInit {
       Validators.required
     ]}]
 
+  });
+
+  signUpInfo = this.fb.group({
+    newName:['',{validators:[
+      Validators.required
+    ]}],
+    newPass:['',{validators:[
+      Validators.required
+    ]}]
   })
 
   onSubmit(){
@@ -40,9 +50,15 @@ export class HomeComponent implements OnInit {
       this.validUsername = r;
       console.log("Received the json...")
       if(r == true)
+      {
         this.loginFail = false;
+      }
+        
       else
+      {
         this.loginFail = true;
+      }
+        
     });
     
   }
@@ -64,7 +80,21 @@ export class HomeComponent implements OnInit {
   submitUser(){
     this.loginAttempt = false;
     this.newUsername = false;
+    this.dataService.newUser(this.signUpInfo.get('newName')?.value,this.signUpInfo.get('newPass')?.value).subscribe(r => {
+      if(r)
+      {
+        console.log("new user made!");
+      }
+      else
+        console.log("username already exists")
+    });
     console.log("Submit")
+  }
+  goSubmission(){
+      this.router.navigate(['/sub'])
+  }
+  signOut(){
+    console.log("signinig out");
   }
 
   get username():any{
@@ -73,6 +103,12 @@ export class HomeComponent implements OnInit {
   get password():any{
     return this.loginInfo.get("password")
   }
+  get newName():any{
+    return this.signUpInfo.get('newName')
+  }
+  get newPass():any{
+    return this.signUpInfo.get('newPass')
+  }
 
   set username(inp:string){
     this.loginInfo.setValue({username:inp})
@@ -80,4 +116,6 @@ export class HomeComponent implements OnInit {
   set password(inp:string){
     this.loginInfo.setValue({password:inp})
   }
+
+
 }

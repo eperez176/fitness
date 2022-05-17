@@ -17,19 +17,21 @@
         <h4>Please Try Again</h4>
         <input type="submit" class="btn" value="Back">
     </form>
-    <form *ngIf="newUsername" class="window">
+    <form *ngIf="newUsername" class="window" [formGroup]="signUpInfo">
         <h3>Sign Up</h3>
         <label for="newUsername">Username</label>
-        <input type="text" class="box">
+        <input type="text" class="box" formControlName="newName">
         <label for="newPassword">Password</label>
-        <input type="text" class="box">
+        <input type="text" class="box" formControlName="newPass">
 
         <div class="side">
-            <button (click)="goBack2()" class="btn2">Back</button> <button class="btn2" (click)="submitUser()">Submit</button>
+            <button (click)="goBack2()" class="btn2" type="button">Back</button> <button class="btn2" (click)="submitUser()" type="button" [disabled]="!loginInfo.valid">Submit</button>
         </div>
         
     </form>
     <div *ngIf="validUsername" class="window">
         <h4>Welcome {{username.value}}!</h4>
+        <button class="btn3" (click)="goSubmission()">Go To Submission</button>
+        <button class="btn3" (click)="signOut()">Sign Out</button>
     </div>
 </div>

@@ -1,6 +1,6 @@
 <div class="home">
     <h1>Fitness Tracker</h1>
-    <form [formGroup]="loginInfo" (ngSubmit)="onSubmit()" class="window" *ngIf="!loginAttempt">
+    <form [formGroup]="loginInfo" (ngSubmit)="onSubmit()" class="window" *ngIf="!loginAttempt && !validUsername">
         <h3>Login</h3>
         <label for="username">Username</label>
         <input type="text" class="box" formControlName="username">
@@ -30,7 +30,7 @@
         
     </form>
     <div *ngIf="validUsername" class="window">
-        <h4>Welcome {{username.value}}!</h4>
+        <h4>Welcome {{currentUsername}}!</h4>
         <button class="btn3" (click)="goSubmission()">Go To Submission</button>
         <button class="btn3" (click)="signOut()">Sign Out</button>
     </div>

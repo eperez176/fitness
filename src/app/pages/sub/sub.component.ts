@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, Validators, FormBuilder, ValidatorFn, AbstractControl, ValidationErrors  } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
+import { UiService } from 'src/app/services/ui.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sub',
@@ -9,18 +11,29 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class SubComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private dataService:DataService) { }
+  validUsername!:boolean;
+  subValid!:Subscription;
+
+  constructor(private fb:FormBuilder, private dataService:DataService, private uiService:UiService) { }
 
   ngOnInit(): void {
+    this.subValid = this.uiService.getUsernameStatus().subscribe(r => {
+      this.validUsername = r;
+    })
   }
 
   addEntry(){
     console.log("entry")
+    console.log(this.subForm)
   }
 
   // Form builder
   subForm = this.fb.group({
     rep:['',{validators:[
+      Validators.required,
+      this.checkNum()
+      ]}],
+    weight:['',{validators:[
       Validators.required,
       this.checkNum()
       ]}],

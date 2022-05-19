@@ -3,6 +3,8 @@ import { Validators, FormBuilder, ValidatorFn, AbstractControl, ValidationErrors
 import { DataService } from 'src/app/services/data.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { EventEmitter } from '@angular/core';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-home',
@@ -12,16 +14,25 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   loginSub!:Subscription;
+  userSub!:Subscription;
 
   validUsername:boolean = false;
   loginAttempt:boolean = false;
   loginFail!:boolean;
   newUsername:boolean = false;
 
-  constructor(private fb: FormBuilder, private dataService:DataService, private router:Router) { }
+  currentUsername!:string;
+
+  constructor(private fb: FormBuilder, private dataService:DataService, private router:Router, private uiService: UiService) { }
 
   ngOnInit(): void {
-    
+    this.loginSub = this.uiService.getUsernameStatus().subscribe(r => {
+      this.validUsername = r;
+      console.log("loginSub changed..")
+    });
+    this.userSub = this.uiService.getUsername().subscribe(r =>{
+      this.currentUsername = r;
+    })
   }
 
   loginInfo = this.fb.group({
@@ -51,6 +62,8 @@ export class HomeComponent implements OnInit {
       console.log("Received the json...")
       if(r == true)
       {
+        this.uiService.setUsername(this.loginInfo.get('username')?.value)
+        this.uiService.setUsernameStatus(true);
         this.loginFail = false;
       }
         
@@ -94,7 +107,10 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/sub'])
   }
   signOut(){
+    this.uiService.setUsernameStatus(false);
+    this.loginAttempt = false;
     console.log("signinig out");
+    this.currentUsername = '';
   }
 
   get username():any{

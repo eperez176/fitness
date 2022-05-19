@@ -26,3 +26,7 @@
 .set{
     display: grid;
 }
+.side{
+    align-items: center;
+    position: sticky;
+}

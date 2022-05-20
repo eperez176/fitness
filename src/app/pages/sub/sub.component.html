@@ -1,5 +1,5 @@
 <div>
-    <form [formGroup]="subForm" (ngSubmit)="addEntry()" class="window" *ngIf="validUsername">
+    <form [formGroup]="subForm" class="window" *ngIf="validUsername">
         <h1>Workout Entry</h1>
         <label for="text">Workout Split</label>
         <select name="workout-split" id="workout-split" class="box" formControlName="split">
@@ -138,6 +138,12 @@
         <label for="text">End Time</label>
         <input type="text" class="box">
 
-        <input type="submit" value="Submit" class="btn" [disabled]="!subForm.valid">
+        <div class="side">
+            <button class="btn2" type="button" (click)="goHome()">Back</button> <button class="btn2" type="button" (click)="addEntry()">Submit</button>
+        </div>
     </form>
+    <div class="window2" *ngIf="!validUsername">
+        <h4>Please Login</h4>
+        <button class="btn2" type="button" (click)="goHome()">Home</button>
+    </div>
 </div>

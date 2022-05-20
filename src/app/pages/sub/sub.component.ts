@@ -3,6 +3,7 @@ import { FormsModule, Validators, FormBuilder, ValidatorFn, AbstractControl, Val
 import { DataService } from 'src/app/services/data.service';
 import { UiService } from 'src/app/services/ui.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sub',
@@ -14,7 +15,7 @@ export class SubComponent implements OnInit {
   validUsername!:boolean;
   subValid!:Subscription;
 
-  constructor(private fb:FormBuilder, private dataService:DataService, private uiService:UiService) { }
+  constructor(private fb:FormBuilder, private dataService:DataService, private uiService:UiService, private router:Router) { }
 
   ngOnInit(): void {
     this.subValid = this.uiService.getUsernameStatus().subscribe(r => {
@@ -25,6 +26,10 @@ export class SubComponent implements OnInit {
   addEntry(){
     console.log("entry")
     console.log(this.subForm)
+  }
+
+  goHome(){
+    this.router.navigate(['/']);
   }
 
   // Form builder

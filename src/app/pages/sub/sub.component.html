@@ -18,7 +18,7 @@
         </select>
         <label for="text">Date</label>
         <input type="text" class="box" formControlName="date">
-        <label class="alert">{{dateErrorMsg}}</label>
+        <label class="alert" *ngIf="date.invalid && (date.touched || date.dirty)">{{dateErrorMsg}}</label>
         <label for="text">Workout Type</label>
         <input type="text" class="box" formControlName="workout_type">
         <label for="text">Start Time</label>

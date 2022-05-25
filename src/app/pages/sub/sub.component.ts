@@ -21,7 +21,7 @@ export class SubComponent implements OnInit {
   validUsername!:boolean;
   entry!:SubEntry;
 
-  dateErrorMsg:string ='';
+  dateErrorMsg:string ='Please Enter Value';
   username!:string;
 
   constructor(private fb:FormBuilder, private dataService:DataService, private uiService:UiService, private router:Router) { }
@@ -61,8 +61,7 @@ export class SubComponent implements OnInit {
     })
   }
 
-  addEntry(){
-    console.log("entry")
+  addEntry(){ // The next thing is to prevent submission  
     console.log(this.subForm)
     this.entry = {
       username:this.username,
@@ -101,6 +100,8 @@ export class SubComponent implements OnInit {
     this.dataService.newEntry(this.entry).subscribe(r => {
       console.log("new entry!")
     });
+
+    this.router.navigate(['/']);
   }
 
   goHome(){
@@ -235,6 +236,9 @@ export class SubComponent implements OnInit {
   }
   get set():any{
     return this.subForm.get("set")
+  }
+  get date():any{
+    return this.subForm.get("date");
   }
 
 }

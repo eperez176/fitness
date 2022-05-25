@@ -55,24 +55,31 @@ export class HomeComponent implements OnInit {
   })
 
   onSubmit(){
-    this.loginAttempt = !this.loginAttempt;
-    console.log("login attempted...")
-    this.dataService.login(this.loginInfo.get('username')?.value,this.loginInfo.get('password')?.value).subscribe(r => { 
-      this.validUsername = r;
-      console.log("Received the json...")
-      if(r == true)
-      {
-        this.uiService.setUsername(this.loginInfo.get('username')?.value)
-        this.uiService.setUsernameStatus(true);
-        this.loginFail = false;
-      }
-        
-      else
-      {
-        this.loginFail = true;
-      }
-        
+    if(this.loginInfo.valid) {
+      this.loginAttempt = !this.loginAttempt;
+      console.log("login attempted...")
+      this.dataService.login(this.loginInfo.get('username')?.value,this.loginInfo.get('password')?.value).subscribe(r => { 
+        this.validUsername = r;
+        console.log("Received the json...")
+        if(r == true)
+        {
+          this.uiService.setUsername(this.loginInfo.get('username')?.value)
+          this.uiService.setUsernameStatus(true);
+          this.loginFail = false;
+        }
+          
+        else
+        {
+          this.loginFail = true;
+        }
     });
+  }
+  else
+    {
+      console.log("change")
+      console.log(this.loginInfo)
+      
+    }
     
   }
 
@@ -105,6 +112,9 @@ export class HomeComponent implements OnInit {
   }
   goSubmission(){
       this.router.navigate(['/sub'])
+  }
+  getData(){
+    console.log('howdy')
   }
   signOut(){
     this.uiService.setUsernameStatus(false);

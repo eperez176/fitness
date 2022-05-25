@@ -4,13 +4,13 @@
         <h3>Login</h3>
         <label for="username">Username</label>
         <input type="text" class="box" formControlName="username">
-        <label *ngIf="username.invalid" for="username-alert" class="alert">Please Enter A Valid Username</label>
+        <label *ngIf="username.invalid && (username.touched || username.dirty)" for="username-alert" class="alert">Please Enter A Valid Username</label>
         <label for="pass">Password</label>
         <input type="text" class="box" formControlName="password">
-        <label *ngIf="password.invalid" for="pass-alert" class="alert">Please Enter A Valid Password</label>
+        <label *ngIf="password.invalid && (password.touched || password.dirty)" for="pass-alert" class="alert">Please Enter A Valid Password</label>
 
         <a (click)="newUser()" class="user">New User?</a>
-        <input type="submit" class="btn" [disabled]="!loginInfo.valid">
+        <input type="submit" class="btn">
     </form>
     <form *ngIf="loginFail" class="window" (ngSubmit)="goBack()">
         <h3>Wrong Username and Password Combination</h3>
@@ -32,6 +32,7 @@
     <div *ngIf="validUsername" class="window">
         <h4>Welcome {{currentUsername}}!</h4>
         <button class="btn3" (click)="goSubmission()">Go To Submission</button>
+        <button class="btn3" (click)="getData()">Previous Set</button>
         <button class="btn3" (click)="signOut()">Sign Out</button>
     </div>
 </div>

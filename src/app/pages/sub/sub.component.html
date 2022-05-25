@@ -17,19 +17,19 @@
             <option value="6">6</option>
         </select>
         <label for="text">Date</label>
-        <input type="text" class="box">
+        <input type="text" class="box" formControlName="date">
+        <label class="alert">{{dateErrorMsg}}</label>
         <label for="text">Workout Type</label>
-        <input type="text" class="box">
+        <input type="text" class="box" formControlName="workout_type">
         <label for="text">Start Time</label>
-        <input type="text" class="box">
+        <input type="text" class="box" formControlName="sTime">
 
         <div *ngIf="set.value >= 1" class="set">
             <h3>Set 1</h3>
             <label for="text">Rep</label>
-            <input type="text" class="box" formControlName="rep">
-            <div *ngIf="rep.invalid && !rep.pristine" class="alert"> Invalid entry!</div>
+            <input type="text" class="box" formControlName="set1_rep">
             <label for="text">Form</label>
-            <select name="form" id="form1" class="box">
+            <select name="form" id="form1" class="box" formControlName="set1_form">
                 <option value="norm">norm</option>
                 <option value="sbf">sbf</option>
                 <option value="bf">bf</option>
@@ -39,16 +39,16 @@
                 <option value="ef">ef</option>
             </select>
             <label for="text">Weight</label>
-            <input type="text" class="box" formControlName="weight">
+            <input type="text" class="box" formControlName="set1_weight">
         </div>
 
         <div *ngIf="set.value >= 2" class="set">
             <h3>Set 2</h3>
             <label for="text">Rep</label>
-            <input type="text" class="box">
+            <input type="text" class="box" formControlName="set2_rep">
             <div class="alert"> Invalid entry!</div>
             <label for="text">Form</label>
-            <select name="form" id="form1" class="box">
+            <select name="form" id="form1" class="box" formControlName="set2_form">
                 <option value="norm">norm</option>
                 <option value="sbf">sbf</option>
                 <option value="bf">bf</option>
@@ -58,15 +58,15 @@
                 <option value="ef">ef</option>
             </select>
             <label for="text">Weight</label>
-        <input type="text" class="box">
+        <input type="text" class="box" formControlName="set2_weight">
         </div>
         <div *ngIf="set.value >= 3" class="set">
             <h3>Set 3</h3>
             <label for="text">Rep</label>
-            <input type="text" class="box">
+            <input type="text" class="box" formControlName="set3_rep">
             <div *ngIf="" class="alert"> Invalid entry!</div>
             <label for="text">Form</label>
-            <select name="form" id="form1" class="box">
+            <select name="form" id="form1" class="box" formControlName="set3_form">
                 <option value="norm">norm</option>
                 <option value="sbf">sbf</option>
                 <option value="bf">bf</option>
@@ -76,16 +76,16 @@
                 <option value="ef">ef</option>
             </select>
             <label for="text">Weight</label>
-        <input type="text" class="box">
+        <input type="text" class="box" formControlName="set3_weight">
         </div>
 
         <div *ngIf="set.value >= 4" class="set">
             <h3>Set 4</h3>
             <label for="text">Rep</label>
-            <input type="text" class="box">
+            <input type="text" class="box" formControlName="set4_rep">
             <div *ngIf="" class="alert"> Invalid entry!</div>
             <label for="text">Form</label>
-            <select name="form" id="form1" class="box">
+            <select name="form" id="form1" class="box" formControlName="set4_form">
                 <option value="norm">norm</option>
                 <option value="sbf">sbf</option>
                 <option value="bf">bf</option>
@@ -95,16 +95,16 @@
                 <option value="ef">ef</option>
             </select>
             <label for="text">Weight</label>
-        <input type="text" class="box">
+        <input type="text" class="box" formControlName="set4_weight">
         </div>
 
         <div *ngIf="set.value >= 5" class="set">
             <h3>Set 5</h3>
             <label for="text">Rep</label>
-            <input type="text" class="box">
+            <input type="text" class="box" formControlName="set5_rep">
             <div *ngIf="" class="alert"> Invalid entry!</div>
             <label for="text">Form</label>
-            <select name="form" id="form1" class="box">
+            <select name="form" id="form1" class="box" formControlName="set5_form">
                 <option value="norm">norm</option>
                 <option value="sbf">sbf</option>
                 <option value="bf">bf</option>
@@ -114,16 +114,16 @@
                 <option value="ef">ef</option>
             </select>
             <label for="text">Weight</label>
-        <input type="text" class="box">
+        <input type="text" class="box" formControlName="set5_weight">
         </div>
 
         <div *ngIf="set.value >= 6" class="set">
             <h3>Set 6</h3>
             <label for="text">Rep</label>
-            <input type="text" class="box">
+            <input type="text" class="box" formControlName="set6_rep">
             <div *ngIf="" class="alert"> Invalid entry!</div>
             <label for="text">Form</label>
-            <select name="form" id="form1" class="box">
+            <select name="form" id="form1" class="box" formControlName="set6_form">
                 <option value="norm">norm</option>
                 <option value="sbf">sbf</option>
                 <option value="bf">bf</option>
@@ -133,10 +133,10 @@
                 <option value="ef">ef</option>
             </select>
             <label for="text">Weight</label>
-        <input type="text" class="box">
+        <input type="text" class="box" formControlName="set6_weight">
         </div>
         <label for="text">End Time</label>
-        <input type="text" class="box">
+        <input type="text" class="box" formControlName="eTime">
 
         <div class="side">
             <button class="btn2" type="button" (click)="goHome()">Back</button> <button class="btn2" type="button" (click)="addEntry()">Submit</button>

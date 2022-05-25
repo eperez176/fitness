@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { stringify } from 'querystring';
+import { SubEntry } from '../structs';
 
 const httpOptions = {
   headers: new HttpHeaders (
@@ -33,6 +34,14 @@ export class DataService {
     //const url = 'http://localhost:10000/newUser';
     const url = 'https://fitness-db.azurewebsites.net/newUser';
     return this.http.post<any>(url,data,httpOptions);
+  }
+  newEntry(entry:SubEntry){
+    console.log("New Entry");
+    console.log(entry);
+    //const url = 'http://localhost:10000/newEntry';
+    const url = 'https://fitness-db.azurewebsites.net/newEntry';
+    return this.http.post<any>(url,entry,httpOptions);
+    
   }
 
 

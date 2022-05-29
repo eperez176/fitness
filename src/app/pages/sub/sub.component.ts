@@ -71,6 +71,7 @@ export class SubComponent implements OnInit {
       end_time:this.subForm.get('eTime')?.value,
       num_of_sets:this.subForm.get('set')?.value,
       workout_type:this.subForm.get('workout_type')?.value,
+      focus:this.subForm.get('focus')?.value,
 
       set1_form:this.subForm.get('set1_form')?.value,
       set1_rep:this.subForm.get('set1_rep')?.value,
@@ -168,8 +169,8 @@ export class SubComponent implements OnInit {
       this.checkTime()
     ]}],
     workout_type:['',{validators:[
-
-    ]}]
+    ]}],
+    focus:['']
   })
   
   checkNum():ValidatorFn { // Validates if the input is a number

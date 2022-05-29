@@ -8,6 +8,7 @@ export interface SubEntry {
     workout_type:string;
     start_time:string;
     end_time:string;
+    focus:string;
 
     // Set 1
     set1_rep:string;
@@ -50,5 +51,13 @@ export interface SubEntry {
 //     [11, 30],
 //     [12, 31]
 // ]);
+
+export interface dataQuery{
+    date:string,
+    type:string,
+    split:string,
+    option:string,
+    username:string
+}
 
 export const monthDays = [31,28,31,30,31,30,31,31,30,31,30,31]

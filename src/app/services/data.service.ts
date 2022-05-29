@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { stringify } from 'querystring';
-import { SubEntry } from '../structs';
+import { dataQuery, SubEntry } from '../structs';
 
 const httpOptions = {
   headers: new HttpHeaders (
@@ -17,8 +17,8 @@ const httpOptions = {
 })
 
 export class DataService {
-  //baseURL = 'http://localhost:10000';
-  baseURL = 'https://fitness-db.azurewebsites.net'
+  baseURL = 'http://localhost:10000';
+  //baseURL = 'https://fitness-db.azurewebsites.net'
 
   constructor(private http: HttpClient) { }
 
@@ -41,6 +41,12 @@ export class DataService {
     const url = this.baseURL + '/newEntry';
     return this.http.post<any>(url,entry,httpOptions);
     
+  }
+  retrieveEntry(data:dataQuery){
+    console.log("retrieving entry");
+    const query = {option:data.option, type:data.type,date:data.date,split:data.split, username:data.username}
+    const url = this.baseURL + '/retrieveData/' + stringify(query);
+    return this.http.get<any>(url, httpOptions);
   }
 
 

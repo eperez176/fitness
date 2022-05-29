@@ -1,0 +1,42 @@
+<div class="window2" *ngIf="!validUsername">
+    <h4>Please Login</h4>
+    <button class="btn2" (click)="goHome()">Home</button>
+</div>
+
+<div class="container">
+    <form class="window" *ngIf="validUsername" [formGroup]="dataForm">
+        <h4>Data Center</h4>
+        <label for="text">Retrieve?</label>
+        <select name="option" id="option" class="box" formControlName="option">
+            <option value="date">Date</option>
+            <option value="split">Workout Split</option>
+            <option value="type">Workout Type</option>
+        </select>
+
+        <div *ngIf="option == 'date' " class="set">
+            <label for="text">Date Input</label>
+            <input type="text" class="box" formControlName="date">
+        </div>
+        <div *ngIf="option == 'split' " class="set">
+            <label for="text">Split Input</label>
+            <input type="text" class="box" formControlName="split">
+        </div>
+        <div *ngIf="option == 'type' " class="set">
+            <label for="text">Type Input</label>
+            <input type="text" class="box" formControlName="type">
+        </div>
+
+        <div class="side">
+            <button class="btn2" type="button" (click)="goHome()">Back</button> <button class="btn2" type="button" (click)="retrieveEntry()">Submit</button>
+        </div>
+        <div *ngIf="retrieveData">
+            <h4>Data</h4>
+            <app-workout-item
+            *ngFor="let workout of responseArray"
+            [data] = "workout"
+            ></app-workout-item>
+        </div>
+    </form>
+
+
+</div>

@@ -114,7 +114,7 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/sub'])
   }
   getData(){
-    console.log('howdy')
+    this.router.navigate(['data']);
   }
   signOut(){
     this.uiService.setUsernameStatus(false);

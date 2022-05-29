@@ -1,0 +1,65 @@
+.window{
+    position: absolute;
+    width: 400px;
+    max-height: 1600px;
+    background-color: aliceblue;
+    left: 33%;
+    top: 15%;
+    border: 1px solid black;
+    text-align: center;
+    display: grid;
+}
+.btn{
+    width: 100px;
+    margin-top: 10px;
+    margin-left: 37.5%;
+    margin-bottom: 1%;
+}
+.box{
+    max-width: 200px;
+    margin-left: 25%;
+    margin-bottom: 1%;
+}
+.alert{
+    color: red;
+
+}
+.set{
+    text-align: center ;
+}
+.side{
+    align-items: center;
+    position: sticky;
+}
+.btn2{
+    width: 100px;
+    margin-bottom: 1%;
+    margin-top: 10px;
+}
+.window2{
+    position: absolute;
+    width: 400px;
+    max-height: 1600px;
+    background-color: rgb(255, 255, 255);
+    left: 33%;
+    top: 15%;
+    border: 1px solid black;
+    text-align: center;
+    align-items: center;
+}
+.window3 {
+    position: absolute;
+    width: 400px;
+    max-height: 1600px;
+    background-color: rgb(255, 255, 255);
+    left: 33%;
+    top: 15%;
+    border: 1px solid black;
+    text-align: center;
+    align-items: center;
+}
+
+.container{
+    position:sticky;
+    display: block;
+}

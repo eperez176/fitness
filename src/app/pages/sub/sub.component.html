@@ -16,6 +16,8 @@
             <option value="5">5</option>
             <option value="6">6</option>
         </select>
+        <label for="text">Focused Area</label>
+        <input type="text" class="box" formControlName="focus">
         <label for="text">Date</label>
         <input type="text" class="box" formControlName="date">
         <label class="alert" *ngIf="date.invalid && (date.touched || date.dirty)">{{dateErrorMsg}}</label>

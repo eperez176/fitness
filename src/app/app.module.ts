@@ -12,6 +12,7 @@ import { SubComponent } from './pages/sub/sub.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DataComponent } from './pages/data/data.component';
 import { WorkoutItemComponent } from './components/workout-item/workout-item.component';
+import { DateItemComponent } from './components/date-item/date-item.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
     SubComponent,
     HeaderComponent,
     DataComponent,
-    WorkoutItemComponent
+    WorkoutItemComponent,
+    DateItemComponent
   ],
   imports: [
     BrowserModule,

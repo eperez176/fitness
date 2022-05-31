@@ -13,6 +13,7 @@ export class WorkoutItemComponent implements OnInit {
   @Input() data!:SubEntry;
   option!:string;
   optionSub!:Subscription;
+  clicked:boolean = false;
 
   constructor(private uiService:UiService) {
     console.log(this.option)
@@ -20,6 +21,10 @@ export class WorkoutItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.optionSub = this.uiService.getOption().subscribe(r => this.option = r)
+  }
+
+  drop(){
+    this.clicked = !this.clicked;
   }
 
 }

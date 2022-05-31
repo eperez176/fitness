@@ -17,8 +17,8 @@ const httpOptions = {
 })
 
 export class DataService {
-  //baseURL = 'http://localhost:10000';
-  baseURL = 'https://fitness-db.azurewebsites.net'
+  baseURL = 'http://localhost:10000';
+  //baseURL = 'https://fitness-db.azurewebsites.net'
 
   constructor(private http: HttpClient) { }
 

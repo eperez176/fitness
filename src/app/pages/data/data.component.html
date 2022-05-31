@@ -30,13 +30,22 @@
         <div class="side">
             <button class="btn2" type="button" (click)="goHome()">Back</button> <button class="btn2" type="button" (click)="retrieveEntry()">Submit</button>
         </div>
-        <div *ngIf="retrieveData">
+        
+        <div *ngIf="retrieveData && option == 'date'">
             <h4>Data</h4>
             <app-workout-item
             *ngFor="let workout of responseArray"
             [data] = "workout"
             ></app-workout-item>
         </div>
+
+        <div *ngIf="retrieveData && option == 'split'">
+            <app-date-item 
+            *ngFor="let day of dateEntry"
+            [dateEntries] = "day">
+            </app-date-item>
+        </div>
+
     </form>
 
 

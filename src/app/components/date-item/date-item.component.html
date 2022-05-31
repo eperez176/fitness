@@ -1,0 +1,15 @@
+<div class="box" (click)="click()">
+    {{dateEntries[0].date}}
+</div>
+<div *ngIf="clicked" class="box2">
+    <div *ngFor="let workout of dateEntries">
+        <p>{{workout.workout_type}} </p>
+        <p> {{workout.set1_rep}}, {{workout.set1_weight}} </p>
+        <p *ngIf="!(workout.set2_rep == '')">{{workout.set2_rep}}, {{workout.set2_weight}} </p>
+        <p *ngIf="!(workout.set3_rep == '')">{{workout.set3_rep}}, {{workout.set3_weight}} </p>
+        <p *ngIf="!(workout.set4_rep == '')">{{workout.set4_rep}}, {{workout.set4_weight}} </p>
+        <p *ngIf="!(workout.set5_rep == '')">{{workout.set5_rep}}, {{workout.set5_weight}} </p>
+        <p *ngIf="!(workout.set6_rep == '')">{{workout.set6_rep}}, {{workout.set6_weight}}</p>
+    </div>
+</div>
+

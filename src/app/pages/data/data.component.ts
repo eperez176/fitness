@@ -27,6 +27,8 @@ export class DataComponent implements OnInit {
 
   responseArray!:SubEntry[];
 
+  dateEntry:SubEntry[][] = [];
+
   constructor(private router:Router, private uiService:UiService, private dataService:DataService, private fb:FormBuilder) { }
 
   dataForm = this.fb.group({
@@ -45,6 +47,7 @@ export class DataComponent implements OnInit {
     this.router.navigate(['']);
   }
   retrieveEntry(){
+    var date:string[] = [];
     //console.log(this.dataForm)
     const query:dataQuery = {
       date:this.dataForm.get('date')?.value,
@@ -55,10 +58,28 @@ export class DataComponent implements OnInit {
     }
     this.dataService.retrieveEntry(query).subscribe(r => {
       this.responseArray = r;
-      console.log(this.responseArray)
+
+      if(query.option == 'split'){
+        console.log(this.responseArray.forEach(r => {
+          if(!date.includes(r.date)){ // Finds unique entries
+            date.push(r.date);
+          }
+        }))
+      }
+
+      var i = 0;
+      date.forEach(d => { // Map different dates
+        this.dateEntry[i] = this.responseArray.filter(doc => {
+          if(doc.date == d){
+            return doc;
+          }
+          else
+            return ;
+        });
+        i += 1;
+      })
     });
 
-    console.log(query)
     this.retrieveData = true;
     this.uiService.setOption(query.option);
   }
@@ -66,4 +87,8 @@ export class DataComponent implements OnInit {
   get option(){
     return this.dataForm.get('option')?.value
   }
+
+  // function dateFilter(elem, index, array) {
+  //   if(elem.date)
+  // }
 }

@@ -1,0 +1,16 @@
+.box{
+    width: 200px;
+    height:30px;
+    background-color: white;
+    margin-left: 25%;
+    margin-bottom: 1%;
+    border: solid black 1px;
+    text-align: center;
+}
+.box2{
+    width: 200px;
+    background-color: rgb(196, 196, 196);
+    margin-left: 25%;
+    border: solid black 1px;
+    text-align: center;
+}

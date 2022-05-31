@@ -1,9 +1,15 @@
-<p>
- {{data.workout_type}} </p>
-<p> {{data.set1_rep}} {{data.set1_weight}} </p>
- <p>{{data.set2_rep}} {{data.set2_weight}} </p>
-<p>{{data.set3_rep}} {{data.set3_weight}} </p>
-<p>{{data.set4_rep}} {{data.set4_weight}} </p>
- <p>{{data.set5_rep}} {{data.set5_weight}} </p>
- <p>{{data.set6_rep}} {{data.set6_weight}}</p>
+    
+<div *ngIf="option == 'date'">
+    <p>{{data.workout_type}} </p>
+    <p> {{data.set1_rep}}, {{data.set1_weight}} </p>
+    <p *ngIf="!(data.set2_rep == '')">{{data.set2_rep}}, {{data.set2_weight}} </p>
+    <p *ngIf="!(data.set3_rep == '')">{{data.set3_rep}}, {{data.set3_weight}} </p>
+    <p *ngIf="!(data.set4_rep == '')">{{data.set4_rep}}, {{data.set4_weight}} </p>
+    <p *ngIf="!(data.set5_rep == '')">{{data.set5_rep}}, {{data.set5_weight}} </p>
+    <p *ngIf="!(data.set6_rep == '')">{{data.set6_rep}}, {{data.set6_weight}}</p>
+</div>
+
+<div>
+
+</div>
 

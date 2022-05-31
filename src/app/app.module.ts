@@ -4,6 +4,8 @@ import {HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
+import { NgxEchartsModule } from 'ngx-echarts';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SubComponent } from './pages/sub/sub.component';
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes,{enableTracing: false}),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxEchartsModule.forRoot({echarts:()=>import('echarts')})
   ],
   providers: [],
   bootstrap: [AppComponent]

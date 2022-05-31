@@ -23,6 +23,8 @@ export class DataComponent implements OnInit {
   type!:string;
   date!:string;
 
+  opt!:string;
+
   responseArray!:SubEntry[];
 
   constructor(private router:Router, private uiService:UiService, private dataService:DataService, private fb:FormBuilder) { }
@@ -58,6 +60,7 @@ export class DataComponent implements OnInit {
 
     console.log(query)
     this.retrieveData = true;
+    this.uiService.setOption(query.option);
   }
 
   get option(){

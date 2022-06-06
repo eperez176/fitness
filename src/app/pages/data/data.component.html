@@ -26,6 +26,10 @@
             <label for="text">Type Input</label>
             <input type="text" class="box" formControlName="type">
         </div>
+        <div *ngIf="option == 'progress'" class="set">
+            <label for="text">Progress Input</label>
+            <input type="text" class="box" formControlName="progress">
+        </div>
 
         <div class="side">
             <button class="btn2" type="button" (click)="goHome()">Back</button> <button class="btn2" type="button" (click)="retrieveEntry()">Submit</button>
@@ -39,11 +43,15 @@
             ></app-workout-item>
         </div>
 
-        <div *ngIf="retrieveData && option == 'split'">
+        <div *ngIf="retrieveData && (option == 'split' || option == 'type')">
             <app-date-item 
             *ngFor="let day of dateEntry"
             [dateEntries] = "day">
             </app-date-item>
+        </div>
+
+        <div *ngIf="retrieveData && option == 'progress'" echarts [options]="options" class="demo-chart">
+
         </div>
 
     </form>

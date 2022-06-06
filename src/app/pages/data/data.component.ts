@@ -15,6 +15,8 @@ export class DataComponent implements OnInit {
   subStatus!:Subscription;
   subUsername!:Subscription;
 
+  options:any;
+
   validUsername:boolean = false;
   retrieveData:boolean = false;
   username:string = '';
@@ -35,6 +37,7 @@ export class DataComponent implements OnInit {
     date:[''],
     split:[''],
     type:[''],
+    progress:[''],
     option:['']
   })
 
@@ -48,23 +51,25 @@ export class DataComponent implements OnInit {
   }
   retrieveEntry(){
     var date:string[] = [];
-    //console.log(this.dataForm)
     const query:dataQuery = {
       date:this.dataForm.get('date')?.value,
       split:this.dataForm.get('split')?.value,
       type:this.dataForm.get('type')?.value,
       option:this.dataForm.get('option')?.value,
+      progress:this.dataForm.get('progress')?.value,
       username:this.username
     }
     this.dataService.retrieveEntry(query).subscribe(r => {
       this.responseArray = r;
 
-      if(query.option == 'split'){
-        console.log(this.responseArray.forEach(r => {
+      console.log(r)
+
+      if(query.option != 'date'){
+        this.responseArray.forEach(r => {
           if(!date.includes(r.date)){ // Finds unique entries
             date.push(r.date);
           }
-        }))
+        })
       }
 
       var i = 0;
@@ -78,9 +83,32 @@ export class DataComponent implements OnInit {
         });
         i += 1;
       })
+      console.log(this.dateEntry);
+      this.options = {
+        legend:{
+          data:['line1','line2'],
+          align:'left'
+        },
+        xAxis:{
+        },
+        yAxis:{},
+        series:[
+        {
+          name:'line1',
+          type:'line',
+          data:[1,2,4,8,16]
+        },
+        {
+          name:'line2',
+          type:'line',
+          data:[1,3,9,27,81]
+        },
+      ]
+      }
     });
 
     this.retrieveData = true;
+    
     this.uiService.setOption(query.option);
   }
 
@@ -88,7 +116,4 @@ export class DataComponent implements OnInit {
     return this.dataForm.get('option')?.value
   }
 
-  // function dateFilter(elem, index, array) {
-  //   if(elem.date)
-  // }
 }

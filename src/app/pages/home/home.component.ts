@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.loginSub = this.uiService.getUsernameStatus().subscribe(r => {
       this.validUsername = r;
-      console.log("loginSub changed..")
     });
     this.userSub = this.uiService.getUsername().subscribe(r =>{
       this.currentUsername = r;
@@ -60,7 +59,6 @@ export class HomeComponent implements OnInit {
       console.log("login attempted...")
       this.dataService.login(this.loginInfo.get('username')?.value,this.loginInfo.get('password')?.value).subscribe(r => { 
         this.validUsername = r;
-        console.log("Received the json...")
         if(r == true)
         {
           this.uiService.setUsername(this.loginInfo.get('username')?.value)
@@ -74,12 +72,6 @@ export class HomeComponent implements OnInit {
         }
     });
   }
-  else
-    {
-      console.log("change")
-      console.log(this.loginInfo)
-      
-    }
     
   }
 
@@ -90,12 +82,10 @@ export class HomeComponent implements OnInit {
   newUser(){
     this.loginAttempt = !this.loginAttempt;
     this.newUsername = true;
-    console.log("new user")
   }
   goBack2(){
     this.loginAttempt = false;
     this.newUsername = false;
-    console.log("Go Back")
   }
   submitUser(){
     this.loginAttempt = false;
@@ -108,7 +98,6 @@ export class HomeComponent implements OnInit {
       else
         console.log("username already exists")
     });
-    console.log("Submit")
   }
   goSubmission(){
       this.router.navigate(['/sub'])
@@ -119,7 +108,6 @@ export class HomeComponent implements OnInit {
   signOut(){
     this.uiService.setUsernameStatus(false);
     this.loginAttempt = false;
-    console.log("signinig out");
     this.currentUsername = '';
   }
 

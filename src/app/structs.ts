@@ -57,7 +57,8 @@ export interface dataQuery{
     type:string,
     split:string,
     option:string,
-    username:string
+    username:string,
+    progress:string
 }
 
 export const monthDays = [31,28,31,30,31,30,31,31,30,31,30,31]
